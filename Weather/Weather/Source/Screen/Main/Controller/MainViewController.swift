@@ -15,8 +15,8 @@ final class MainViewController: UIViewController {
     
     private let locationManager = CLLocationManager()
     
-    var latitude = 0.0
-    var longitude = 0.0
+    var latitude = 37.552102211961085
+    var longitude = 126.95587037133782
 
     // MARK: - @IBOutlet
     
@@ -36,6 +36,7 @@ final class MainViewController: UIViewController {
         super.viewDidLoad()
         configureUI()
         setupCoreLocation()
+        print(latitude, longitude)
     }
     
     // MARK: - Configure UI & Layout
@@ -78,6 +79,7 @@ extension MainViewController: CLLocationManagerDelegate {
         if let coordinate = locations.last?.coordinate {
             latitude = coordinate.latitude
             longitude = coordinate.longitude
+            print(latitude, longitude)
         }
         locationManager.stopUpdatingLocation()
     }
@@ -85,6 +87,7 @@ extension MainViewController: CLLocationManagerDelegate {
     // 위치 정보를 가져오지 못한 경우
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("💥 위치 정보를 가져오지 못했습니다!")
+        checkUserCurrentLocationAuthorization(locationManager.authorizationStatus)
     }
     
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
