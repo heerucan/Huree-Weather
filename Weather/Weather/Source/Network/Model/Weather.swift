@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+struct Weather {
+    let icon, description: String
+    let humidity, cloud: Int
+    let temp, tempMax, tempMin: Double
+}
