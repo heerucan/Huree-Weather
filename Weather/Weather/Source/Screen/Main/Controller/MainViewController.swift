@@ -36,7 +36,7 @@ final class MainViewController: UIViewController {
         super.viewDidLoad()
         configureUI()
         setupCoreLocation()
-        print(latitude, longitude)
+        requestWeather()
     }
     
     // MARK: - Configure UI & Layout
@@ -67,7 +67,13 @@ final class MainViewController: UIViewController {
         return formatter.string(from: now)
     }
     
-    // MARK: - @objc
+    // MARK: - Network
+    
+    func requestWeather() {
+        WeatherManager.shared.requestWeather(lat: latitude, lon: longitude) { json in
+//            print(json)
+        }
+    }
 
 }
 
@@ -79,7 +85,6 @@ extension MainViewController: CLLocationManagerDelegate {
         if let coordinate = locations.last?.coordinate {
             latitude = coordinate.latitude
             longitude = coordinate.longitude
-            print(latitude, longitude)
         }
         locationManager.stopUpdatingLocation()
     }
