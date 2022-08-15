@@ -9,5 +9,5 @@ import Foundation
 
 enum EndPoint {
     static let weatherURL = "https://api.openweathermap.org/data/2.5/weather?"
-    static let iconURL = "http://openweathermap.org/img/wn/"
+    static let iconURL = "https://openweathermap.org/img/wn/"
 }

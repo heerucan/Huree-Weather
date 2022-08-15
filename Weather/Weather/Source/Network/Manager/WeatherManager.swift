@@ -18,7 +18,7 @@ struct WeatherManager {
     // MARK: - GET Current Weather Info
     
     func requestWeather(lat: Double, lon: Double, completion: @escaping completion) {
-        let url = EndPoint.weatherURL + "lat=\(lat)&lon=\(lon)&appid=" + APIKey.WEATHER
+        let url = EndPoint.weatherURL + "lat=\(lat)&lon=\(lon)&appid=" + APIKey.WEATHER + "&units=metric"
         
         AF.request(url, method: .get).validate(statusCode: 200..<400).responseData(queue: .global()) { response in
             switch response.result {
