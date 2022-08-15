@@ -6,8 +6,9 @@
 //
 
 import UIKit
-
 import CoreLocation
+
+import Kingfisher
 
 final class MainViewController: UIViewController {
     
@@ -23,6 +24,7 @@ final class MainViewController: UIViewController {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var tempLabel: UILabel!
+    @IBOutlet weak var maxMinLabel: UILabel!
     @IBOutlet weak var humidityLabel: UILabel!
     @IBOutlet weak var windLabel: UILabel!
     @IBOutlet weak var commentLabel: UILabel!
@@ -70,11 +72,16 @@ final class MainViewController: UIViewController {
     // MARK: - Network
     
     func requestWeather() {
-        WeatherManager.shared.requestWeather(lat: latitude, lon: longitude) { json in
-//            print(json)
+        WeatherManager.shared.requestWeather(lat: latitude, lon: longitude) { weather in
+            DispatchQueue.main.async {
+                self.tempLabel.text = "현재 온도는 \(weather.temp)°"
+                self.maxMinLabel.text = "최고 \(weather.tempMax)°  최저 \(weather.tempMin)°"
+                self.humidityLabel.text = "현재 습도는 \(weather.humidity)% 입니다."
+                self.windLabel.text = "현재 풍속은 \(weather.wind)m/s 입니다."
+                self.iconImageView.kf.setImage(with: URL(string: weather.icon))
+            }
         }
     }
-
 }
 
 // MARK: - CLLocationManagerDelegate

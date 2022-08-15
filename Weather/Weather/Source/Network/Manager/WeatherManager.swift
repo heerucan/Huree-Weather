@@ -26,11 +26,11 @@ struct WeatherManager {
                 let json = JSON(value)
                 let weather = Weather(icon: String.makeIconURL(json["weather"][0]["icon"].stringValue),
                                       description: json["weather"][0]["description"].stringValue,
+                                      wind: json["wind"]["speed"].doubleValue,
                                       humidity: json["main"]["humidity"].intValue,
-                                      cloud: json["clouds"]["all"].intValue,
-                                      temp: json["main"]["temp"].doubleValue,
-                                      tempMax: json["main"]["temp_max"].doubleValue,
-                                      tempMin: json["main"]["temp_min"].doubleValue)
+                                      temp: json["main"]["temp"].intValue,
+                                      tempMax: json["main"]["temp_max"].intValue,
+                                      tempMin: json["main"]["temp_min"].intValue)
                 completion(weather)
                 
             case .failure(let error):
