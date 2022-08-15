@@ -22,7 +22,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7PJ-Xa-a0r">
                                 <rect key="frame" x="20" y="74" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YcU-wx-D9A">
@@ -31,14 +31,17 @@
                                     <constraint firstAttribute="width" constant="31" id="CXs-LW-3Fs"/>
                                     <constraint firstAttribute="width" secondItem="YcU-wx-D9A" secondAttribute="height" multiplier="1:1" id="Sdg-Y5-nuw"/>
                                 </constraints>
-                                <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="paperplane.fill" catalog="system"/>
+                                <connections>
+                                    <action selector="touchupLocationButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="x1U-ot-lCI"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bzf-vn-2j3">
                                 <rect key="frame" x="71" y="116.5" width="55" height="28"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V3Q-gB-hlh">
@@ -47,7 +50,7 @@
                                     <constraint firstAttribute="width" constant="31" id="BgI-yU-S1Q"/>
                                     <constraint firstAttribute="width" secondItem="V3Q-gB-hlh" secondAttribute="height" multiplier="1:1" id="Px5-Uz-mvr"/>
                                 </constraints>
-                                <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="square.and.arrow.up" catalog="system"/>
                             </button>
@@ -57,7 +60,7 @@
                                     <constraint firstAttribute="width" constant="31" id="P4D-6J-SYw"/>
                                     <constraint firstAttribute="width" secondItem="EnU-Ku-kH1" secondAttribute="height" multiplier="1:1" id="xLq-4p-OPq"/>
                                 </constraints>
-                                <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="arrow.clockwise" catalog="system"/>
                             </button>
@@ -182,6 +185,21 @@
                             <constraint firstItem="Ufr-Mv-Q2u" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="zXb-ZV-0Y8"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="backgroundImageView" destination="Tg6-Cv-lmI" id="WMW-5M-AGD"/>
+                        <outlet property="commentLabel" destination="nDs-kY-1Yu" id="ZeY-3x-wXn"/>
+                        <outlet property="dateLabel" destination="7PJ-Xa-a0r" id="Rm9-uD-Mok"/>
+                        <outlet property="humidityLabel" destination="VYT-Zn-1Jw" id="gwS-jb-4oD"/>
+                        <outlet property="iconImageView" destination="GLI-3c-lKg" id="5Kf-ot-hQR"/>
+                        <outlet property="locationLabel" destination="bzf-vn-2j3" id="gck-nE-xHQ"/>
+                        <outlet property="tempLabel" destination="2DM-Hc-UTs" id="1mV-eQ-RVg"/>
+                        <outlet property="windLabel" destination="ATl-2N-3cm" id="vMX-W9-y0N"/>
+                        <outletCollection property="backView" destination="EVj-KB-qhW" collectionClass="NSMutableArray" id="w63-ef-PkY"/>
+                        <outletCollection property="backView" destination="R79-Wf-Acn" collectionClass="NSMutableArray" id="g2d-YC-SOi"/>
+                        <outletCollection property="backView" destination="vCX-0g-8jo" collectionClass="NSMutableArray" id="PRa-Dv-fLW"/>
+                        <outletCollection property="backView" destination="Ufr-Mv-Q2u" collectionClass="NSMutableArray" id="TY9-sa-HbI"/>
+                        <outletCollection property="backView" destination="GHx-vZ-SLr" collectionClass="NSMutableArray" id="ujA-ol-UPz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
