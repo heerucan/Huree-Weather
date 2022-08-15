@@ -7,7 +7,6 @@
 
 import UIKit
 import MapKit
-
 import CoreLocation
 
 import Kingfisher
@@ -17,6 +16,7 @@ final class MainViewController: UIViewController {
     // MARK: - Property
     
     private let locationManager = CLLocationManager()
+    private let geocoder = CLGeocoder()
     
     var latitude = 37.552102211961085
     var longitude = 126.95587037133782
@@ -41,13 +41,15 @@ final class MainViewController: UIViewController {
         configureUI()
         setupCoreLocation()
         setupMap()
+        findAddress()
         requestWeather()
     }
     
     // MARK: - Configure UI & Layout
     
     private func configureUI() {
-        dateLabel.text = getCurrentTime()
+        commentLabel.numberOfLines = 0
+        dateLabel.text = Date().getCurrentTime()
         backView.forEach { $0.makeRound(10) }
         backView.forEach { $0.makeBorder(1) }
     }
@@ -77,12 +79,17 @@ final class MainViewController: UIViewController {
         mapView.addAnnotation(annotation)
     }
     
-    private func getCurrentTime() -> String {
-        let now = Date()
-        let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "ko_KR")
-        formatter.dateFormat = "MM월 dd일(EEEEE) hh시 mm분"
-        return formatter.string(from: now)
+    private func findAddress() {
+        let locale = Locale(identifier: "Ko-kr")
+        let location = CLLocation(latitude: latitude,
+                                  longitude: longitude)
+        geocoder.reverseGeocodeLocation(location,
+                                        preferredLocale: locale) { (placemarks, error) in
+            if let locality = placemarks?.last?.locality,
+               let subLocality = placemarks?.last?.subLocality {
+                self.locationLabel.text = locality + ", " + subLocality
+            }
+        }
     }
     
     // MARK: - Network
@@ -109,6 +116,7 @@ extension MainViewController: CLLocationManagerDelegate {
         if let coordinate = locations.last?.coordinate {
             latitude = coordinate.latitude
             longitude = coordinate.longitude
+            requestWeather()
         }
         locationManager.stopUpdatingLocation()
     }
@@ -186,10 +194,4 @@ extension MainViewController {
         locationServiceAlert.addAction(settingAction)
         present(locationServiceAlert, animated: true)
     }
-}
-
-// MARK: - MKMapViewDelegate
-
-extension MainViewController: MKMapViewDelegate {
-    
 }
