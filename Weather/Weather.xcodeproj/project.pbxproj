@@ -14,7 +14,6 @@
 		5B058A9828A960F400B397A6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B058A9628A960F400B397A6 /* LaunchScreen.storyboard */; };
 		5B058AA728A961C900B397A6 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B058AA628A961C900B397A6 /* MainViewController.swift */; };
 		5B058AB128A96A6600B397A6 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B058AB028A96A6600B397A6 /* APIKey.swift */; };
-		5B058AB328A96A7100B397A6 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B058AB228A96A7100B397A6 /* Constant.swift */; };
 		5B058AB528A96BA300B397A6 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B058AB428A96BA300B397A6 /* EndPoint.swift */; };
 		5B2DAB3C28A97AA9005B4761 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2DAB3B28A97AA9005B4761 /* UIView+.swift */; };
 		5BCF508B28AAABA60007A394 /* WeatherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCF508A28AAABA60007A394 /* WeatherManager.swift */; };
@@ -35,7 +34,6 @@
 		5B058A9928A960F400B397A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5B058AA628A961C900B397A6 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		5B058AB028A96A6600B397A6 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
-		5B058AB228A96A7100B397A6 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		5B058AB428A96BA300B397A6 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		5B2DAB3B28A97AA9005B4761 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		5BCF508A28AAABA60007A394 /* WeatherManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherManager.swift; sourceTree = "<group>"; };
@@ -106,7 +104,6 @@
 		5B058AA328A9617C00B397A6 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				5B058AB228A96A7100B397A6 /* Constant.swift */,
 				5B058AA828A961D100B397A6 /* Extension */,
 			);
 			path = Common;
@@ -124,7 +121,7 @@
 		5B058AA528A961B700B397A6 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				5B058AAD28A96A2B00B397A6 /* Controller */,
+				5B058AA628A961C900B397A6 /* MainViewController.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -154,14 +151,6 @@
 				5BCF508A28AAABA60007A394 /* WeatherManager.swift */,
 			);
 			path = Manager;
-			sourceTree = "<group>";
-		};
-		5B058AAD28A96A2B00B397A6 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				5B058AA628A961C900B397A6 /* MainViewController.swift */,
-			);
-			path = Controller;
 			sourceTree = "<group>";
 		};
 		5B058AAE28A96A3F00B397A6 /* Font */ = {
@@ -288,7 +277,6 @@
 				5B2DAB3C28A97AA9005B4761 /* UIView+.swift in Sources */,
 				5B058AB128A96A6600B397A6 /* APIKey.swift in Sources */,
 				5B058AB528A96BA300B397A6 /* EndPoint.swift in Sources */,
-				5B058AB328A96A7100B397A6 /* Constant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

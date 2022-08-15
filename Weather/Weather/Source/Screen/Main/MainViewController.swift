@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import MapKit
+
 import CoreLocation
 
 import Kingfisher
@@ -19,10 +21,9 @@ final class MainViewController: UIViewController {
     var latitude = 37.552102211961085
     var longitude = 126.95587037133782
     
-    var comment: Description = .clearsky
-
     // MARK: - @IBOutlet
     
+    @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var tempLabel: UILabel!
@@ -30,7 +31,6 @@ final class MainViewController: UIViewController {
     @IBOutlet weak var humidityLabel: UILabel!
     @IBOutlet weak var windLabel: UILabel!
     @IBOutlet weak var commentLabel: UILabel!
-    @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet var backView: [UIView]!
     
@@ -40,6 +40,7 @@ final class MainViewController: UIViewController {
         super.viewDidLoad()
         configureUI()
         setupCoreLocation()
+        setupMap()
         requestWeather()
     }
     
@@ -48,19 +49,32 @@ final class MainViewController: UIViewController {
     private func configureUI() {
         dateLabel.text = getCurrentTime()
         backView.forEach { $0.makeRound(10) }
-        backgroundImageView.backgroundColor = .orange
+        backView.forEach { $0.makeBorder(1) }
     }
     
     // MARK: - @IBAction
     
     @IBAction func touchupLocationButton(_ sender: UIButton) {
-        
+        setupMap()
     }
     
     // MARK: - Custom Method
     
     private func setupCoreLocation() {
         locationManager.delegate = self
+    }
+    
+    private func setupMap() {
+        let center = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        let region = MKCoordinateRegion(center: center,
+                                        latitudinalMeters: 800,
+                                        longitudinalMeters: 800)
+        mapView.setRegion(region, animated: true)
+        
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = center
+        annotation.title = "현재 위치"
+        mapView.addAnnotation(annotation)
     }
     
     private func getCurrentTime() -> String {
@@ -80,8 +94,7 @@ final class MainViewController: UIViewController {
                 self.maxMinLabel.text = "최고 \(weather.tempMax)°  최저 \(weather.tempMin)°"
                 self.humidityLabel.text = "현재 습도는 \(weather.humidity)% 입니다."
                 self.windLabel.text = "현재 풍속은 \(weather.wind)m/s 입니다."
-                self.commentLabel.text = weather.description
-                
+                self.commentLabel.text = weather.description.convertKorean()
                 self.iconImageView.kf.setImage(with: URL(string: weather.icon))
             }
         }
@@ -173,4 +186,10 @@ extension MainViewController {
         locationServiceAlert.addAction(settingAction)
         present(locationServiceAlert, animated: true)
     }
+}
+
+// MARK: - MKMapViewDelegate
+
+extension MainViewController: MKMapViewDelegate {
+    
 }
