@@ -18,6 +18,8 @@ final class MainViewController: UIViewController {
     
     var latitude = 37.552102211961085
     var longitude = 126.95587037133782
+    
+    var comment: Description = .clearsky
 
     // MARK: - @IBOutlet
     
@@ -78,6 +80,8 @@ final class MainViewController: UIViewController {
                 self.maxMinLabel.text = "최고 \(weather.tempMax)°  최저 \(weather.tempMin)°"
                 self.humidityLabel.text = "현재 습도는 \(weather.humidity)% 입니다."
                 self.windLabel.text = "현재 풍속은 \(weather.wind)m/s 입니다."
+                self.commentLabel.text = weather.description
+                
                 self.iconImageView.kf.setImage(with: URL(string: weather.icon))
             }
         }

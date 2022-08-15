@@ -11,4 +11,9 @@ extension UIView {
     func makeRound(_ radius: CGFloat) {
         layer.cornerRadius = radius
     }
+    
+    func makeBorder(_ width: CGFloat) {
+        layer.borderColor = UIColor.black.cgColor
+        layer.borderWidth = width
+    }
 }
