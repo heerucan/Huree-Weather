@@ -97,11 +97,11 @@ final class MainViewController: UIViewController {
     func requestWeather() {
         WeatherManager.shared.requestWeather(lat: latitude, lon: longitude) { weather in
             DispatchQueue.main.async {
-                self.tempLabel.text = "현재 온도는 \(weather.temp)°"
-                self.maxMinLabel.text = "최고 \(weather.tempMax)°  최저 \(weather.tempMin)°"
-                self.humidityLabel.text = "현재 습도는 \(weather.humidity)% 입니다."
-                self.windLabel.text = "현재 풍속은 \(weather.wind)m/s 입니다."
-                self.commentLabel.text = weather.description.convertKorean()
+                self.tempLabel.text = weather.tempLabel
+                self.maxMinLabel.text = weather.maxMinLabel
+                self.humidityLabel.text = weather.humidityLabel
+                self.windLabel.text = weather.windLabel
+                self.commentLabel.text = weather.descriptionLabel
                 self.iconImageView.kf.setImage(with: URL(string: weather.icon))
             }
         }
